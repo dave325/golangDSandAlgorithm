@@ -44,12 +44,10 @@ func processLinkedList() {
 
 	ll := LinkedList{}
 	ll.addItem(1)
-	fmt.Println(ll.Data)
-	fmt.Println(ll.Next)
 	ll.addItem(2)
-	fmt.Println(ll.Data)
-	fmt.Println(ll.Next)
 	ll.addItem(3)
-	fmt.Println(ll.Data)
-	fmt.Println(ll.Next)
+	ll.printList()
+	ll.deleteItem(2)
+	ll.printList()
+
 }
