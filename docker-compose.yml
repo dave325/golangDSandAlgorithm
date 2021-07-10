@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+    server:
+        container_name: nestjs_api_dev
+        build:
+            context: server
+            dockerfile: ./Dockerfile
+        command: npm run start:dev
+        ports:
+            - 8000:8000
+            - 9229:9229
+        networks:
+            - nesjs-network
+        volumes:
+            - ./server:/app
+            - /app/node_modules
+        restart: unless-stopped
+    frontend:
+        container_name: frontend
+        build: ./frontend
+        volumes:
+          - './frontend:/app'
+          - '/app/node_modules'
+        ports:
+          - 3000:3000
+        environment:
+          - CHOKIDAR_USEPOLLING=true
+
+networks:
+    nesjs-network:
